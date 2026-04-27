@@ -1,0 +1,63 @@
+# AWS credentials - NEVER commit these
+.aws/
+credentials
+*.pem
+aws_credentials*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Virtual environments
+venv/
+env/
+spark-env/
+.venv/
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+*.crc
+_SUCCESS
+
+# Data files - too large for git, lives in S3
+*.parquet
+*.csv
+*.json.gz
+*.zst
+data/
+raw_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Results - we'll commit selectively, not everything
+results/figures/*.png
+results/figures/*.jpg
+results/tables/*.csv
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+cricket-env/
+.venv/
