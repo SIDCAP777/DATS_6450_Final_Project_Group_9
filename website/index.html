@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Three Kings: How Reddit Reacted to India's Heartbreak and Redemption</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1116;
+    --surface: #161b22;
+    --surface-2: #1c232c;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #f4a261;
+    --accent-2: #2a9d8f;
+    --accent-3: #e76f51;
+    --accent-4: #e9c46a;
+    --border: #30363d;
+    --display: 'Cormorant Garamond', serif;
+    --body: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); line-height: 1.7; font-size: 16px; overflow-x: hidden; }
+
+  .hero { min-height: 100vh; background: radial-gradient(ellipse at 20% 30%, rgba(244,162,97,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(42,157,143,0.15) 0%, transparent 50%), linear-gradient(180deg, #0a0d11 0%, #0e1116 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; position: relative; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+  .hero-tag { font-family: var(--body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; opacity: 0.9; }
+  .hero h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 1100px; margin-bottom: 1.5rem; }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero h1 .accent-2 { color: var(--accent-2); font-style: italic; }
+  .hero p.lede { font-size: 1.15rem; max-width: 720px; color: var(--text-muted); margin-bottom: 3rem; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; width: 100%; }
+  .hero-stat { border-top: 1px solid var(--border); padding-top: 1rem; }
+  .hero-stat .num { font-family: var(--display); font-size: 2.2rem; font-weight: 600; color: var(--text); }
+  .hero-stat .label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.25rem; }
+  .hero-meta { margin-top: 4rem; font-size: 0.85rem; color: var(--text-muted); }
+  .hero-meta a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-tag { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 1rem; }
+  .section-tag.eda { color: var(--accent); }
+  .section-tag.nlp { color: var(--accent-3); }
+  .section-tag.ml { color: var(--accent-4); }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.15; letter-spacing: -0.01em; max-width: 900px; margin-bottom: 1.5rem; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.6rem; margin-top: 3rem; margin-bottom: 1rem; color: var(--text); }
+  h3 .qnum { color: var(--accent); font-style: italic; margin-right: 0.5rem; }
+  p { margin-bottom: 1.25rem; max-width: 760px; }
+  p strong { color: var(--text); }
+
+  .figure { margin: 2.5rem 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+  .figure img { width: 100%; height: auto; display: block; border-radius: 2px; background: white; }
+  .figure-caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; background: var(--surface); border: 1px solid var(--border); }
+  th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--surface-2); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout { border-left: 3px solid var(--accent-2); padding: 1.25rem 1.5rem; background: var(--surface); margin: 2rem 0; border-radius: 0 4px 4px 0; }
+  .callout.warn { border-color: var(--accent-3); }
+  .callout.note { border-color: var(--accent); }
+  .callout strong { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-2); }
+  .callout.warn strong { color: var(--accent-3); }
+  .callout.note strong { color: var(--accent); }
+
+  .qlist { list-style: none; counter-reset: qcount; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .qlist li { counter-increment: qcount; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; position: relative; }
+  .qlist li::before { content: "Q" counter(qcount); position: absolute; top: 1rem; right: 1rem; font-family: var(--display); font-weight: 600; font-size: 1.2rem; color: var(--accent); opacity: 0.5; }
+  .qlist .qcat { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 0.5rem; }
+  .qlist .qcat.eda { color: var(--accent); }
+  .qlist .qcat.nlp { color: var(--accent-3); }
+  .qlist .qcat.ml { color: var(--accent-4); }
+  .qlist .qtext { font-size: 0.95rem; color: var(--text); }
+
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+  .metric { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; }
+  .metric .v { font-family: var(--display); font-size: 2.5rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .metric .l { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; }
+
+  footer { background: #0a0d11; padding: 3rem 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer .team { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+
+  nav.toc { position: fixed; top: 2rem; right: 2rem; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; backdrop-filter: blur(10px); z-index: 50; font-size: 0.8rem; max-width: 200px; }
+  nav.toc ul { list-style: none; }
+  nav.toc li { margin: 0.4rem 0; }
+  nav.toc a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  nav.toc a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav.toc { display: none; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .qlist { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr; }
+    section { padding: 4rem 0; }
+  }
+
+  .quote { font-family: var(--display); font-size: 1.3rem; font-style: italic; color: var(--text); border-left: 3px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: var(--surface); }
+  .quote .src { display: block; font-size: 0.85rem; font-style: normal; color: var(--text-muted); margin-top: 0.5rem; font-family: var(--body); }
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#dataset">The Dataset</a></li>
+    <li><a href="#questions">10 Questions</a></li>
+    <li><a href="#eda">EDA · Q1 to Q4</a></li>
+    <li><a href="#nlp">NLP · Q5 to Q7</a></li>
+    <li><a href="#ml">ML · Q8 to Q10</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag">DATS 6450 · Big Data Analytics · Final Project</div>
+  <h1>The <span class="accent">Three Kings</span> &amp; <br>How Reddit Reacted to India's <br><span class="accent-2">Heartbreak</span> and <span class="accent">Redemption</span></h1>
+  <p class="lede">We took 478 GB of Reddit data covering June 2023 through July 2024 and used it to trace how cricket fans online lived through one of the most emotional years in Indian cricket. The story runs from the World Cup final loss in November 2023 to the T20 redemption in June 2024, told through the lens of Dhoni, Kohli, and Rohit.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">478<span style="font-size:1rem">GB</span></div><div class="label">Raw Reddit dataset</div></div>
+    <div class="hero-stat"><div class="num">567<span style="font-size:1rem">M</span></div><div class="label">Submissions scanned</div></div>
+    <div class="hero-stat"><div class="num">3.68<span style="font-size:1rem">B</span></div><div class="label">Comments scanned</div></div>
+    <div class="hero-stat"><div class="num">46</div><div class="label">Cricket subreddits filtered</div></div>
+  </div>
+  <div class="hero-meta">
+    Group 9 · Nikhil Obuleni · Viharika Vemparala · Siddardha Reddy<br>
+    <a href="https://github.com/SIDCAP777/DATS_6450_Final_Project_Group_9">github.com/SIDCAP777/DATS_6450_Final_Project_Group_9</a>
+  </div>
+</header>
+
+<main>
+
+<section id="dataset">
+  <div class="section-tag">01 · Foundation</div>
+  <h2>A 478 GB question, asked of 4 billion Reddit rows.</h2>
+  <p>The full Reddit dump for June 2023 through July 2024 lives in S3 as Hive-partitioned Parquet. It contains roughly 567 million submissions and 3.68 billion comments across every subreddit on the site. Pandas on a laptop chokes on a single month of this. Even one month is too large to fit comfortably in memory.</p>
+  <p>So the project runs on Apache Spark 3.5.1 in local mode on an EC2 t3.large, reading directly from S3 over the s3a connector. The first heavy lift was a single Spark job called <code>01_cricket_filtering.ipynb</code>. It scanned every partition in the dataset and kept only rows whose subreddit appeared in our 46-name cricket allowlist. That run took roughly 3.5 hours for the comments and another 35 minutes for submissions, writing the trimmed result back to S3 as a clean partitioned Parquet table that every downstream notebook reads in seconds.</p>
+  <div class="metrics">
+    <div class="metric"><div class="v">242,886</div><div class="l">Cricket submissions (filtered)</div></div>
+    <div class="metric"><div class="v">6.7M+</div><div class="l">Cricket comments (filtered)</div></div>
+    <div class="metric"><div class="v">~13 mo</div><div class="l">Time window analyzed</div></div>
+  </div>
+  <h3>Why these dates</h3>
+  <p>The window is bracketed by two events that anchor the entire narrative. October and November of 2023 are when India went undefeated through the ODI World Cup group stage and then lost the final to Australia. June 2024 is when the same core squad won the T20 World Cup against South Africa. In between sits the IPL 2024 season, which is the cricket calendar's commercial heartbeat. Three discrete emotional eras, all visible in the same Reddit corpus.</p>
+</section>
+
+<section id="questions">
+  <div class="section-tag">02 · Framing</div>
+  <h2>One problem statement, ten answerable questions.</h2>
+  <p>The high-level question driving everything is this: how does an online fan community process collective heartbreak and collective redemption, and can we predict which posts ride the emotional wave? That's too broad to query directly, so we broke it down into ten specific questions across three analytical pillars: descriptive (EDA), text-mining (NLP), and predictive (ML).</p>
+  <ol class="qlist">
+    <li><div class="qcat eda">EDA</div><div class="qtext">Which of the three kings (Dhoni, Kohli, or Rohit) generates the most Reddit activity?</div></li>
+    <li><div class="qcat eda">EDA</div><div class="qtext">How did posting volume and sentiment change after the 2023 WC loss vs. the 2024 T20 win?</div></li>
+    <li><div class="qcat eda">EDA</div><div class="qtext">Which subreddits dominated during each final, and did the dominant communities shift?</div></li>
+    <li><div class="qcat eda">EDA</div><div class="qtext">How does engagement differ between player-specific posts and team India posts?</div></li>
+    <li><div class="qcat nlp">NLP</div><div class="qtext">What is the sentiment around each player, and how does it shift during key events?</div></li>
+    <li><div class="qcat nlp">NLP</div><div class="qtext">What are the most distinctive words used in posts about Dhoni vs Kohli vs Rohit?</div></li>
+    <li><div class="qcat nlp">NLP</div><div class="qtext">What latent topics dominate during the 2023 loss period vs. the 2024 win period?</div></li>
+    <li><div class="qcat ml">ML</div><div class="qtext">Can we classify a post as high-engagement (top 25% score) from its features?</div></li>
+    <li><div class="qcat ml">ML</div><div class="qtext">Can we predict the number of comments a post will receive via regression?</div></li>
+    <li><div class="qcat ml">ML</div><div class="qtext">Can K-Means cluster cricket subreddits into meaningful behavioral groups?</div></li>
+  </ol>
+</section>
+
+<section id="eda">
+  <div class="section-tag eda">03 · Exploratory Analysis</div>
+  <h2>Volume tells one story. Engagement tells another.</h2>
+
+  <h3><span class="qnum">Q1.</span>Who do Reddit's cricket fans actually talk about?</h3>
+  <p>Across 13 months of cricket subreddits, Rohit Sharma was named in nearly twice as many posts as Dhoni. But that's a misleading scoreline, because the picture changes the moment you weight by engagement.</p>
+  <div class="figure">
+    <img src="../results/figures/02_player_mentions_posts.png" alt="Bar chart of player mentions in posts">
+    <div class="figure-caption">Total posts mentioning each player across cricket subreddits, June 2023 to July 2024.</div>
+  </div>
+  <table>
+    <thead><tr><th>Player</th><th class="num">Posts</th><th class="num">Avg score</th><th class="num">Avg comments</th></tr></thead>
+    <tbody>
+      <tr><td>Dhoni</td><td class="num">5,296</td><td class="num">99.7</td><td class="num">11.1</td></tr>
+      <tr><td>Kohli</td><td class="num">7,300</td><td class="num">91.6</td><td class="num">14.3</td></tr>
+      <tr><td>Rohit</td><td class="num">9,910</td><td class="num">72.4</td><td class="num">13.2</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Finding</strong>
+    Dhoni had the fewest posts but the highest average score per post (99.7). Posts about him are rarer but consistently more upvoted, which is the signature of a fanbase that's smaller, older, and more devoted. Rohit dominates volume because he was the active captain, but his per-post engagement is the lowest of the three.
+  </div>
+
+  <h3><span class="qnum">Q2.</span>Heartbreak vs. redemption, side by side</h3>
+  <p>The week after the 2023 WC final (the loss to Australia) generated 5,917 posts. The week after the 2024 T20 final (the win over South Africa) generated 7,217 posts. That's only 22 percent more by volume, but the engagement gap is much wider.</p>
+  <div class="figure">
+    <img src="../results/figures/04_heartbreak_vs_redemption.png" alt="Three side-by-side bar charts comparing 2023 WC loss vs 2024 T20 win">
+    <div class="figure-caption">Reddit aftermath of both finals. The 2024 win generated 62 percent higher avg score and 17 percent more comments per post than the 2023 loss.</div>
+  </div>
+  <table>
+    <thead><tr><th>Event</th><th class="num">Posts</th><th class="num">Avg score</th><th class="num">Avg comments</th></tr></thead>
+    <tbody>
+      <tr><td>2023 WC Final (Loss)</td><td class="num">5,917</td><td class="num">71.2</td><td class="num">16.0</td></tr>
+      <tr><td>2024 T20 Final (Win)</td><td class="num">7,217</td><td class="num">115.1</td><td class="num">18.8</td></tr>
+    </tbody>
+  </table>
+  <p>The redemption produced 62 percent higher average post scores and 17 percent more comments per post. Defeats compress engagement, victories amplify it. A sample of the highest-scoring posts in each window makes the tonal contrast obvious.</p>
+  <div class="quote">
+    "Aussies are mentality monsters" from <em>r/CricketShitpost</em><br>
+    "It hurts" from <em>r/IndiaCricket</em><br>
+    "Australia are champions of the 2023 ODI World Cup" from <em>r/Cricket</em>
+    <span class="src">Top three posts after the 2023 final loss (12,418 / 10,234 / 9,948 score)</span>
+  </div>
+  <div class="quote">
+    "A scene for ages, an absolute cinema of a World Cup!" from <em>r/IndiaCricket</em><br>
+    "Rohit Sharma announces his T20I retirement" from <em>r/Cricket</em><br>
+    "Surely will give goosebumps man!!!!!!" from <em>r/IndiaCricket</em>
+    <span class="src">Top three posts after the 2024 final win (18,710 / 13,559 / 13,206 score)</span>
+  </div>
+
+  <h3><span class="qnum">Q3.</span>Did the dominant communities shift?</h3>
+  <p>Both finals were dominated by the same big three subreddits: r/Cricket, r/CricketShitpost, and r/IndiaCricket. But the daily rhythm was very different.</p>
+  <div class="figure">
+    <img src="../results/figures/03_daily_posts_wc2023.png" alt="Daily post volume during 2023 World Cup">
+    <div class="figure-caption">Daily Reddit volume during the 2023 ODI World Cup. The November 19 final triggered the largest single-day spike of the tournament.</div>
+  </div>
+  <div class="figure">
+    <img src="../results/figures/04_daily_posts_t20wc2024.png" alt="Daily post volume during 2024 T20 World Cup">
+    <div class="figure-caption">Daily Reddit volume during the 2024 T20 World Cup. The June 29 final spike is followed by an unusually long tail, a celebration that lasted days.</div>
+  </div>
+  <p>The aftermath shapes are different in a meaningful way. After the 2023 loss, volume drops fast. Grief is intense but short. After the 2024 win, volume stays elevated for nearly a week, sustained by the team's homecoming parade in Mumbai on July 4.</p>
+
+  <h3><span class="qnum">Q4.</span>Player posts vs. team posts</h3>
+  <p>Posts mentioning a single player generally have higher per-post scores than team India posts in the same windows. But team India posts dominate by volume during defining moments. The final-day spikes are more than 80 percent team-tagged, not player-tagged. Individual narratives like a Rohit retirement post or a Kohli farewell act as emotional anchors. Team coverage acts as the news ticker.</p>
+  <div class="figure">
+    <img src="../results/figures/02_monthly_mention_trends.png" alt="Monthly mentions of Dhoni, Kohli, and Rohit">
+    <div class="figure-caption">Monthly player-mention trends. Both Kohli and Rohit spike massively around the 2023 final. The November 19 vertical line is when India lost. The June 29 line is when they won.</div>
+  </div>
+</section>
+
+<section id="nlp">
+  <div class="section-tag nlp">04 · Natural Language Processing</div>
+  <h2>The mood, in numbers.</h2>
+
+  <h3><span class="qnum">Q5.</span>Sentiment, ranked by player and event</h3>
+  <p>VADER's compound score gives every post or comment a number between -1 (very negative) and +1 (very positive). Aggregated, the per-player ranking is unambiguous.</p>
+  <div class="figure">
+    <img src="../results/figures/05_player_sentiment.png" alt="Avg sentiment per player">
+    <div class="figure-caption">Average VADER compound sentiment for posts mentioning each player.</div>
+  </div>
+  <table>
+    <thead><tr><th>Player</th><th class="num">Posts</th><th class="num">Avg sentiment</th></tr></thead>
+    <tbody>
+      <tr><td>Dhoni</td><td class="num">5,296</td><td class="num">+0.108</td></tr>
+      <tr><td>Kohli</td><td class="num">7,300</td><td class="num">+0.073</td></tr>
+      <tr><td>Rohit</td><td class="num">9,910</td><td class="num">+0.063</td></tr>
+    </tbody>
+  </table>
+  <p>Dhoni's fanbase is the most consistently positive, which lines up with his per-post engagement edge in Q1. Less volume, more love. Kohli sits in the middle. Rohit, despite being the active captain and the most-mentioned player overall, has the lowest average sentiment. That's a function of being closest to the spotlight when things go wrong.</p>
+  <p>Across event periods, the pattern is even cleaner.</p>
+  <div class="figure">
+    <img src="../results/figures/05_sentiment_by_period.png" alt="Sentiment by event period">
+    <div class="figure-caption">Average sentiment by event period. The progression climbs steadily from the 2023 group stage all the way to the 2024 final aftermath.</div>
+  </div>
+  <table>
+    <thead><tr><th>Period</th><th class="num">Avg sentiment</th></tr></thead>
+    <tbody>
+      <tr><td>WC 2023 group stage</td><td class="num">+0.053</td></tr>
+      <tr><td>WC 2023 final aftermath</td><td class="num">+0.051</td></tr>
+      <tr><td>IPL 2024</td><td class="num">+0.062</td></tr>
+      <tr><td>T20 WC 2024 group stage</td><td class="num">+0.072</td></tr>
+      <tr><td>T20 WC 2024 final aftermath</td><td class="num"><strong>+0.116</strong></td></tr>
+    </tbody>
+  </table>
+  <p>The post-win window is more than twice as positive as the post-loss window. Reddit's sentiment closely tracks the scoreboard.</p>
+
+  <div class="figure">
+    <img src="../results/figures/05_sentiment_distribution_loss_vs_win.png" alt="KDE sentiment distribution loss vs win">
+    <div class="figure-caption">KDE distribution of post sentiment in the two aftermaths. The win curve is shifted distinctly to the right.</div>
+  </div>
+
+  <h3><span class="qnum">Q6.</span>The keywords each era was made of</h3>
+  <div class="figure">
+    <img src="../results/figures/05_top_keywords_by_period.png" alt="Top TF-IDF keywords by period">
+    <div class="figure-caption">Top distinctive TF-IDF keywords per event period (post titles).</div>
+  </div>
+  <p>The TF-IDF keyword extraction lights up exactly the moments you would expect. <em>Australia, Mitchell, final, lost</em> dominate the 2023 aftermath. <em>Champion, Rohit, retirement, parade, Mumbai</em> dominate the 2024 aftermath. The keyword shape between the two aftermaths is a textbook tonal inversion.</p>
+
+  <h3><span class="qnum">Q7.</span>Latent topics from LDA</h3>
+  <p>We trained a 6-topic LDA on a 50,000-comment sample. Topic 5 emerged as the clearest player-centric topic, anchored by <em>kohli, gill, pitch, rohit, score</em>. That's performance discussion. Topic 4 captured the geopolitical and world-cup dimension (<em>world, australia, wc</em>). Topic 2 surfaced the long-running Reddit complaint genre about pitches and the ICC. Topic 0 picked up the meme and reaction style of r/CricketShitpost (<em>lol, brohit, bro</em>).</p>
+  <div class="figure">
+    <img src="../results/figures/05_lda_topics.png" alt="LDA topic words">
+    <div class="figure-caption">LDA topic words (k=6). Topics 0, 4, and 5 are the most cricket-substantive. Topics 1, 2, and 3 capture moderation language and meta-commentary.</div>
+  </div>
+  <div class="callout note">
+    <strong>Honest caveat</strong>
+    LDA on Reddit comments picks up a lot of meta-language: "[removed]", subreddit moderation messages, and stray punctuation. Topic 1 is essentially a moderation footer. We kept it in the figure to show the real shape of the data rather than cleaning it cosmetically.
+  </div>
+</section>
+
+<section id="ml">
+  <div class="section-tag ml">05 · Machine Learning</div>
+  <h2>What can, and can't, be predicted.</h2>
+
+  <h3><span class="qnum">Q8.</span>Can we classify high-engagement posts?</h3>
+  <p>We labeled the top 25 percent of posts by score as "high engagement" and trained a Random Forest classifier (50 trees, depth 6) on features including hour-of-day, day-of-week, month, player mentions, subreddit (one-hot), and event period (one-hot). The pipeline runs entirely in Spark MLlib.</p>
+  <div class="metrics">
+    <div class="metric"><div class="v">0.673</div><div class="l">AUC-ROC</div></div>
+    <div class="metric"><div class="v">73.86%</div><div class="l">Accuracy</div></div>
+    <div class="metric"><div class="v">50</div><div class="l">Trees · depth 6</div></div>
+  </div>
+  <p>An AUC of 0.67 is meaningfully better than chance (0.5) but well short of strong. The feature importances make the reason obvious.</p>
+  <div class="figure">
+    <img src="../results/figures/06_q8_feature_importances.png" alt="Feature importances for high-engagement classifier">
+    <div class="figure-caption">Feature importances for the high-engagement classifier. Subreddit identity (around 70 percent) and month (around 26 percent) account for nearly the entire signal.</div>
+  </div>
+  <p>Subreddit accounts for roughly 70 percent of the model's predictive signal. Where you post matters enormously more than what you post about, when you post, or which player you mention. A meme on r/CricketShitpost will out-engage a serious analysis on a mid-tier IPL franchise sub almost every time. Time-of-day and player mentions are nearly noise. This is a real and useful finding. Engagement is community-driven, not content-driven.</p>
+
+  <h3><span class="qnum">Q9.</span>Can we predict comment count via regression?</h3>
+  <div class="metrics">
+    <div class="metric"><div class="v">382.97</div><div class="l">RMSE</div></div>
+    <div class="metric"><div class="v">0.016</div><div class="l">R²</div></div>
+    <div class="metric"><div class="v">×</div><div class="l">Verdict: Don't use this</div></div>
+  </div>
+  <p>An R² of 0.016 means the model explains less than 2 percent of the variance in comment count. The predicted-vs-actual scatter is informative. Almost all predictions cluster in a narrow band while actual values fan out massively.</p>
+  <div class="figure">
+    <img src="../results/figures/06_q9_predicted_vs_actual.png" alt="Predicted vs actual comment count scatter">
+    <div class="figure-caption">Predicted vs actual comment count. The dashed line is perfect prediction. The model's spread is far too narrow.</div>
+  </div>
+  <div class="callout warn">
+    <strong>Honest finding</strong>
+    Comment count is far harder to predict than upvote score. Comments depend on conversation potential like controversy, debate-bait, or breaking news, none of which our metadata features capture. A meaningful model would need NLP features (toxicity, question-density, controversy lexicons) and probably interaction effects we didn't engineer. We report this as a limitation, not a success.
+  </div>
+
+  <h3><span class="qnum">Q10.</span>Clustering subreddits by behavior</h3>
+  <p>K-Means on subreddit-level features (post count, avg score, avg comments, player-mention ratios, avg post hour) with k=4 produces interpretable groups despite a modest silhouette score of 0.195.</p>
+  <div class="figure">
+    <img src="../results/figures/06_q10_subreddit_clusters.png" alt="Subreddit clusters scatter plot">
+    <div class="figure-caption">Subreddit clusters. Bubble size scales with post volume.</div>
+  </div>
+  <table>
+    <thead><tr><th>Cluster</th><th>Members</th><th>Profile</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>ipl, HiTMAN, RCB, KKR, csk, MumbaiIndians, SRH, DC, EnglandCricket, ViratKohli, RohitSharma, IndianCricket</td><td><strong>Team and player fan subs.</strong> Moderate volume, moderate engagement, fan-club tone.</td></tr>
+      <tr><td>1</td><td>r/Cricket</td><td><strong>The mainstream giant.</strong> By far the highest comment-per-post (65.5), the global cricket discussion hub.</td></tr>
+      <tr><td>2</td><td>CricketShitpost, IndiaCricket</td><td><strong>The high-score humor and India cluster.</strong> Viral content factories with the highest avg post scores.</td></tr>
+      <tr><td>3</td><td>PakCricket, RajasthanRoyals, srh</td><td><strong>The rivalry and lower-engagement cluster.</strong> Smaller communities with distinct cultures.</td></tr>
+    </tbody>
+  </table>
+  <p>The clustering recovers a structure that lines up with what cricket fans intuitively know. r/Cricket is uniquely conversational. r/CricketShitpost manufactures virality. Fan-club subs behave like brand communities. Rival and niche subs cluster separately. K-Means picked all of that up from posting-pattern features alone, no text needed.</p>
+</section>
+
+<section id="recommendations">
+  <div class="section-tag">06 · So what?</div>
+  <h2>Five recommendations the data actually supports.</h2>
+  <p>The findings translate into concrete decisions for anyone whose work intersects with cricket fan engagement.</p>
+
+  <h3>1. For sports broadcasters (Hotstar, Star Sports, ESPN)</h3>
+  <p>Post-match content should hit r/Cricket and r/CricketShitpost first. Together they account for nearly half of all cricket Reddit volume and the highest engagement multipliers. Fan-team subs (RCB, MI, CSK) deliver narrower but more loyal audiences. Subreddit choice matters roughly 70 times more than the time of day you post, so optimize for placement, not timing.</p>
+
+  <h3>2. For sponsors and player-management agencies</h3>
+  <p>Dhoni delivers the highest sentiment per mention (+0.108) despite being effectively retired from international cricket. His fanbase is the most positive and most loyal. Sponsorship ROI for "endearment" campaigns favors Dhoni. ROI for "reach" favors Rohit. Kohli is the all-rounder middle ground, with high volume, high sentiment, and broad appeal.</p>
+
+  <h3>3. For the BCCI's communications office</h3>
+  <p>Recovery from a major loss takes roughly 3 days of declining volume and around 5 days for sentiment to return to baseline. Victory engagement, by contrast, sustains for 5 to 7 days due to homecoming events. Plan press, sponsor reveals, and merchandise drops accordingly. Don't push through grief, but absolutely capitalize on the seven-day celebration tail.</p>
+
+  <h3>4. For Reddit infrastructure planning</h3>
+  <p>Cricket subreddits experience predictable order-of-magnitude traffic surges around major finals, with daily volume rising 5 to 10 times above baseline. The sustained tail after wins (versus the sharp drop after losses) means autoscaling logic that decays linearly will under-provision celebration windows. Win-tail capacity needs to stay elevated longer than loss-tail capacity.</p>
+
+  <h3>5. For sports journalists and content creators</h3>
+  <p>Two narrative wells consistently produce viral posts. The first is retirement and farewell content ("Rohit Sharma announces his T20I retirement", 13,559 score). The second is moment-of-defeat empathy posts ("It hurts", 10,234 score). Single-emotion, low-word headlines outperform analytical ones in the immediate aftermath of major events. Save the deep dives for 48 hours later, when the audience is ready for them.</p>
+</section>
+
+<section id="team">
+  <div class="section-tag">07 · Acknowledgments</div>
+  <h2>How this got built.</h2>
+  <p>Everything runs on Apache Spark 3.5.1 in local mode on a single t3.large EC2 instance reading from S3 over the s3a connector. Sentiment is VADER. Topic modeling is MLlib LDA. Both predictive models are MLlib Random Forests, and clustering is MLlib K-Means with StandardScaler. The full pipeline is reproducible from the seven notebooks in the repo.</p>
+  <table>
+    <thead><tr><th>Notebook</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>00_data_exploration.ipynb</code></td><td>Schema validation, partition coverage, top-subreddit baselines</td></tr>
+      <tr><td><code>01_cricket_filtering.ipynb</code></td><td>The big Spark job, filters 478 GB down to 242k posts plus 6.7M comments</td></tr>
+      <tr><td><code>02_eda_three_kings.ipynb</code></td><td>Q1, Q4 covering player engagement and monthly trends</td></tr>
+      <tr><td><code>03_heartbreak_2023wc.ipynb</code></td><td>Q2, Q3 covering the 2023 WC final aftermath</td></tr>
+      <tr><td><code>04_redemption_2024t20.ipynb</code></td><td>Q2, Q3 covering the 2024 T20 WC win and head-to-head</td></tr>
+      <tr><td><code>05_nlp_sentiment_topics.ipynb</code></td><td>Q5, Q6, Q7 covering VADER, TF-IDF, LDA</td></tr>
+      <tr><td><code>06_ml_models.ipynb</code></td><td>Q8, Q9, Q10 covering the classifier, regressor, and clustering</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<footer>
+  <div class="team">
+    <div><strong>Nikhil Obuleni</strong></div>
+    <div><strong>Viharika Vemparala</strong></div>
+    <div><strong>Siddardha Reddy</strong></div>
+  </div>
+  <div>Group 9 · DATS 6450 Big Data Analytics · Spring 2026</div>
+  <div style="margin-top:1rem;">
+    <a href="https://github.com/SIDCAP777/DATS_6450_Final_Project_Group_9">View source on GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
