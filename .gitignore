@@ -22,6 +22,7 @@ venv/
 env/
 spark-env/
 .venv/
+cricket-env/
 
 # Spark
 spark-warehouse/
@@ -30,9 +31,8 @@ derby.log
 *.crc
 _SUCCESS
 
-# Data files - too large for git, lives in S3
+# Large data files - lives in S3
 *.parquet
-*.csv
 *.json.gz
 *.zst
 data/
@@ -46,18 +46,9 @@ raw_data/
 *~
 .DS_Store
 
-# Results - we'll commit selectively, not everything
-results/figures/*.png
-results/figures/*.jpg
-results/tables/*.csv
-!results/figures/.gitkeep
-!results/tables/.gitkeep
-
 # Logs
 *.log
 logs/
 
 # OS
 Thumbs.db
-cricket-env/
-.venv/

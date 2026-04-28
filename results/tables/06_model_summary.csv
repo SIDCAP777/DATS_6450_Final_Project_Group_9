@@ -1,0 +1,4 @@
+Question,Model,Task,Result
+Q8,RF Classifier,Predict high engagement (top 25%),"AUC=0.6733, Acc=0.7386"
+Q9,RF Regressor,Predict comment count,"RMSE=382.97, R²=0.0162"
+Q10,K-Means (k=4),Cluster subreddits by behavior,Silhouette=0.1953

@@ -1,0 +1,9 @@
+feature,importance
+event_period (OHE),0.0
+mentions_rohit,0.0012072958814922858
+mentions_dhoni,0.0012432588784546854
+mentions_kohli,0.0015269018745229207
+day_of_week,0.009949463292986573
+hour_of_day,0.023291630290439014
+month_num,0.26442173441149236
+subreddit (OHE),0.6983597153706121
